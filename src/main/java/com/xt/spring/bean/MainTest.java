@@ -1,9 +1,6 @@
-package com.xt.spring;
+package com.xt.spring.bean;
 
 
-import com.xt.spring.bean.Car;
-import com.xt.spring.bean.HelloWorld;
-import com.xt.spring.bean.Person;
 import com.xt.spring.bean.collections.DataSource;
 import com.xt.spring.bean.collections.NewPerson;
 import org.springframework.context.ApplicationContext;
@@ -18,7 +15,7 @@ public class MainTest {
          * ApplicationContext 代表 IOC 容器， 是 BeanFactory 的子接口
          * ClassPathXmlApplicationContext：是 ApplicationContext 接口的实现类，该实现类从类路径下加载配置文件
          */
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans/applicationContext.xml");
 
         //2. 从 IOC 容器中获取 bean 的实例
         // 利用 id 定位到容器中的 Bean

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.xt.spring.bean.autowire.Address"
+          p:city="Beijing" p:street="HuiLongGuan"/>
+
+    <bean id="car" class="com.xt.spring.bean.autowire.Car"
+          p:brand="Audi" p:price="250000"/>
+
+    <!-- 手工注入 -->
+    <!--
+    <bean id="person" class="com.xt.spring.bean.autowire.Person"
+          p:name="Tom" p:address-ref="address" p:car-ref="car"/>
+    -->
+
+    <!--
+        可以使用 autowire 属性指定自动装配的方式
+        byName 根据 bean 的名字和当前 bean 的 setter 风格的属性名进行自动装配，
+               若有匹配的，则进行自动装配，若没有匹配的，则不装配
+        byType 根据 bean 的类型和当前 bean 的属性的类型进行自动装配
+    -->
+    <bean id="person" class="com.xt.spring.bean.autowire.Person"
+          p:name="Tom" autowire="byType"/>
+
+</beans>

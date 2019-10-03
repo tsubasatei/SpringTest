@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="person" class="com.xt.spring.web.bean.Person">
-        <property name="username" value="Spring"/>
+        <property name="username" value="Jack"/>
     </bean>
 </beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 使用 SpEL 为属性赋一个字面值-->
+    <bean id="address" class="com.xt.spring.bean.spel.Address">
+        <property name="city" value="#{'BeiJing'}"></property>
+        <property name="street" value="WuDaoKou"></property>
+    </bean>
+
+    <bean id="car" class="com.xt.spring.bean.spel.Car">
+        <property name="brand" value="Audi"></property>
+        <property name="price" value="500000"></property>
+        <!-- 使用 SpEL 引用类的静态属性 -->
+        <property name="typePerimeter" value="#{T(java.lang.Math).PI * 80}"></property>
+    </bean>
+
+    <bean id="person" class="com.xt.spring.bean.spel.Person">
+        <!-- 使用 SpEL 来引用其他的 Bean -->
+        <property name="car" value="#{car}"/>
+        <!-- 使用 SpEL 来引用其他的 Bean 的属性-->
+        <property name="city" value="#{address.city}"/>
+        <!-- 在 SpEL 中使用运算符 -->
+        <property name="info" value="#{car.price >= 300000 ? '金领' : '白领'}"/>
+        <property name="name" value="Tom"/>
+    </bean>
+</beans>
