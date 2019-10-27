@@ -14,7 +14,7 @@ public class SpringServletContextListener implements ServletContextListener {
 
         // 0. 获取 Spring 配置文件的名称
         ServletContext servletContext = sce.getServletContext();
-        String config = servletContext.getInitParameter("configLocation");
+        String config = servletContext.getInitParameter("contextConfigLocation");
 
         // 1. 创建 IOC 容器
         ApplicationContext ioc = new ClassPathXmlApplicationContext(config);

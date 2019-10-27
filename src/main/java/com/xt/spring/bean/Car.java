@@ -6,14 +6,13 @@ public class Car {
     private String brand;
     private String corp;
     private int price;
+    private double maxSpeed;
 
     public Car(String brand, String corp, double maxSpeed) {
         this.brand = brand;
         this.corp = corp;
         this.maxSpeed = maxSpeed;
     }
-
-    private double maxSpeed;
 
     public Car(String brand, String corp, int price) {
         this.brand = brand;

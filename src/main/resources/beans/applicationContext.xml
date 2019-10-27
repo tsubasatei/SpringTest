@@ -20,7 +20,7 @@
     -->
     <bean id="car" class="com.xt.spring.bean.Car">
         <constructor-arg value="Audi" index="0"/>
-        <!-- 如果字面值包含特殊字符可以使用 <![CDATA[]> 包裹起来使用
+        <!-- 如果字面值包含特殊字符可以使用 <![CDATA[]]> 包裹起来使用
              属性值也可以使用 value 子节点进行配置
         -->
         <constructor-arg index="1">

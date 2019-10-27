@@ -24,5 +24,5 @@
          换句话说 person 这个 bean 依赖于 car 这个 bean
     -->
     <bean id="person" class="com.xt.spring.bean.autowire.Person"
-          p:name="Tom" p:address-ref="address2" depends-on="car"/>
+          p:name="Tom" p:address-ref="address2" depends-on="car" autowire="byName"/>
 </beans>

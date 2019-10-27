@@ -28,7 +28,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!-- 配置 NamedParameterJdbcTemplate, 该对象可以使用具名参数， 起没有无参数的构造器，所以必须为其构造器指定参数-->
+    <!-- 配置 NamedParameterJdbcTemplate, 该对象可以使用具名参数， 其没有无参数的构造器，所以必须为其构造器指定参数-->
     <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg ref="dataSource"/>
     </bean>
