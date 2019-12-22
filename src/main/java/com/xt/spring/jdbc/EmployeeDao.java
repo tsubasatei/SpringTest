@@ -14,7 +14,7 @@ public class EmployeeDao {
 
     public Employee getById(Integer id) {
         String sql = "SELECT id, lastName,EMAIL,gender, d_id 'department.id' FROM employee WHERE id=?";
-        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<Employee>(Employee.class);
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         Employee employee = jdbcTemplate.queryForObject(sql, rowMapper, id);
         return employee;
     }

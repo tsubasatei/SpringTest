@@ -11,7 +11,9 @@
     <bean id="address"
           p:city="BeiJing" p:street="WuDaoKou" abstract="true"/>
 
-    <!-- bean 配置的继承： 使用 bean 的 parent 属性指定继承哪个 bean 的配置 -->
+    <!-- bean 配置的继承： 使用 bean 的 parent 属性指定继承哪个 bean 的配置
+         并不是 <bean> 元素里的所有属性都会被继承. 比如: autowire, abstract 等
+    -->
     <bean id="address2" class="com.xt.spring.bean.autowire.Address"
           parent="address" />
 
@@ -22,6 +24,9 @@
 
     <!-- 要求在配置 Person 时，必须有一个关联的 car
          换句话说 person 这个 bean 依赖于 car 这个 bean
+         Spring 允许用户通过 depends-on 属性设定 Bean 前置依赖的Bean，前置依赖的 Bean 会在本 Bean 实例化之前创建好
+         如果前置依赖于多个 Bean，则可以通过逗号，空格或的方式配置 Bean 的名称
+
     -->
     <bean id="person" class="com.xt.spring.bean.autowire.Person"
           p:name="Tom" p:address-ref="address2" depends-on="car" autowire="byName"/>

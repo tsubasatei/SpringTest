@@ -51,7 +51,13 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
     
-    <!-- 2. 配置事务属性 -->
+    <!-- 2. 配置事务属性
+            事务管理是一种横切关注点, <tx:advice> 元素声明事务通知,
+            由于事务通知是在 <aop:config> 元素外部声明的, 所以它无法直接与切入点产生关联.
+            所以必须在 <aop:config> 元素中声明一个增强器通知与切入点关联起来.
+            由于 Spring AOP 是基于代理的方法, 所以只能增强公共方法. 因此, 只有公有方法才能通过 Spring AOP 进行事务管理.
+
+    -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <!-- 根据方法名指定事务的属性 -->

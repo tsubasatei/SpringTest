@@ -13,7 +13,7 @@ public class MainTest {
         // 2. 从 IOC 容器中获取 bean 的实例
         ArithmeticCalculator arithmeticCalculator = (ArithmeticCalculator) ioc.getBean("arithmeticCalculator");
 
-        System.out.println(arithmeticCalculator.getClass().getName());
+        System.out.println(arithmeticCalculator.getClass().getName()); // com.sun.proxy.$Proxy6
 
         // 3. 使用 bean
         int result = arithmeticCalculator.add(3, 6);

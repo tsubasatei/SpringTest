@@ -3,6 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--
+        spel 支持运算符：
+            算数运算符：+, -, *, /, %, ^
+            加号还可以用作字符串连接
+            比较运算符： <, >, ==, <=, >=, lt, gt, eq, le, ge
+
+        调用静态方法或静态属性：通过 T() 调用一个类的静态方法，它将返回一个 Class Object，
+        然后再调用相应的方法或属性
+
+    -->
     <!-- 使用 SpEL 为属性赋一个字面值-->
     <bean id="address" class="com.xt.spring.bean.spel.Address">
         <property name="city" value="#{'BeiJing'}"></property>

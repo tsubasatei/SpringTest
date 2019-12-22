@@ -1,6 +1,5 @@
 package com.xt.spring.bean;
 
-
 public class HelloWorld {
 
     private String name;

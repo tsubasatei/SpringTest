@@ -6,6 +6,7 @@
     <!--
         通过静态工厂方法来配置 bean，注意不是配置静态工厂的实例，而是配置 bean 实例
 
+        id: bean的实例名称
         class 属性：指向静态工厂的全类名
         factory-method：静态工厂的静态方法的名字
         constructor-arg：如果工厂方法需要传入参数，则使用 constructor-arg 来配置参数

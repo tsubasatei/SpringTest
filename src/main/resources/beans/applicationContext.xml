@@ -7,8 +7,17 @@
     <!-- 配置 bean
          class: bean 的全类名，通过反射的方式在 IOC 容器中创建 Bean，
                 所以要求 Bean 中必须有无参数的构造器
-         id: 标识容器中的 bean，id 唯一
+         id: Bean 的名称。
+            - 在 IOC 容器中必须是唯一的
+            - 若 id 没有指定，Spring 自动将权限定性类名作为 Bean 的名字
+            - id 可以指定多个名字，名字之间可用逗号、分号、或空格分隔
+
     -->
+
+    <!-- Spring 支持 3 种依赖注入的方式
+            属性注入: setter
+            构造器注入 <constructor-arg> 中没有 name 属性
+            工厂方法注入（很少使用，不推荐）-->
     <bean id="helloWorld" class="com.xt.spring.bean.HelloWorld">
         <!-- 为属性赋值 -->
         <property name="name" value="Spring"></property>
@@ -27,7 +36,7 @@
             <value><![CDATA[<shanghai^>]]></value>
         </constructor-arg>
         <constructor-arg type="int">
-            <value>250</value>
+            <value>270</value>
         </constructor-arg>
     </bean>
 

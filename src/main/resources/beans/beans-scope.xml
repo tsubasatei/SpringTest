@@ -7,6 +7,8 @@
         使用 bean 的 scope 属性来配置 bean 的作用域
         singleton：默认值 单例的。容器初始化时创建 bean 实例。在整个容器的生命周期内只创建这一个 bean。
         prototype: 原型的。容器初始化时不创建 bean 的实例，而在每次请求时都创建一个新的bean 实例，并返回。
+        request: 每次HTTP请求都会创建一个新的Bean，该作用域仅适用于WebApplicationContext环境
+        session: 同一个HTTP Session共享一个Bean，不同的HTTP Session使用不同的Bean。该作用域仅适用于WebApplicationContext环境
     -->
     <bean id="car" class="com.xt.spring.bean.autowire.Car" scope="singleton">
         <property name="brand" value="Audi"  />

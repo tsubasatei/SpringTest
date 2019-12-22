@@ -35,6 +35,7 @@ public class JDBCTest {
     /**
      * 使用具名参数时，可以使用 update(String sql, SqlParameterSource sqlParameterSource) 方法进行更新操作
      * 1. SQL 语句中的参数名和类的属性一致
+     *      具名参数: SQL 按名称(以冒号开头)而不是按位置进行指定.
      * 2. 使用 SqlParameterSource 的  BeanPropertyParameterSource 实现类作为参数
      */
     @Test
@@ -57,7 +58,7 @@ public class JDBCTest {
     @Test
     public void testNamedParameterJdbcTemplate () {
         String sql = "insert into employee(lastName, email, gender, d_id) values (:ln, :email, :gender, :did)";
-        Map<String, Object> paramMap = new HashMap<String, Object>();
+        Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("ln", "FF");
         paramMap.put("email", "ff@163.com");
         paramMap.put("gender", 0);
@@ -95,24 +96,24 @@ public class JDBCTest {
      */
     @Test
     public void testQueryForList () {
-        String sql = "SELECT id, lastName,EMAIL,gender, d_id 'department.id' FROM employee WHERE id>?";
-        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<Employee>(Employee.class);
+        String sql = "SELECT id, lastName, EMAIL, gender, d_id 'department.id' FROM employee WHERE id>?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         List<Employee> employees = jdbcTemplate.query(sql, rowMapper, 6);
         System.out.println(employees);
     }
 
     /**
      * 从数据库中获取一条记录，实际得到对应的一个对象
-     * X 注意不是调用 queryForObject(String sql, Class<Employee> requiredType, Object... args) 风法
+     * X 注意不是调用 queryForObject(String sql, Class<Employee> requiredType, Object... args) 方法
      * 而需要调用 queryForObject(String sql, RowMapper<Employee> rowMapper, Object... args)
      * 1. 其中的 RowMapper 指定如何去映射结果集的行，常用的实现类为 BeanPropertyRowMapper
-     * 2. 使用 SQL 中列的别名完成列明和类的属性名的映射，例如 last_name lastName
+     * 2. 使用 SQL 中列的别名完成列名和类的属性名的映射，例如 last_name lastName
      * 3. 不支持级联属性。 JdbcTemplate 到底是一个 JDBC 的小工具，而不是 ORM 框架
      */
     @Test
     public void testQueryForObject () {
-        String sql = "SELECT id, lastName,EMAIL,gender, d_id 'department.id' FROM employee WHERE id=?";
-        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<Employee>(Employee.class);
+        String sql = "SELECT id, lastName, EMAIL, gender, d_id 'department.id' FROM employee WHERE id=?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         Employee employee = jdbcTemplate.queryForObject(sql, rowMapper, 7);
         System.out.println(employee);
     }
@@ -123,7 +124,7 @@ public class JDBCTest {
     @Test
     public void testBatchUpdate () {
         String sql = "INSERT INTO employee(lastName, email, gender, d_id) VALUES (?, ?, ?, ?)";
-        List<Object[]> batchArgs = new ArrayList<Object[]>();
+        List<Object[]> batchArgs = new ArrayList<>();
         batchArgs.add(new  Object[] {"AA", "aa@163.com", 1, 1});
         batchArgs.add(new  Object[] {"BB", "bb@163.com", 0, 2});
         batchArgs.add(new  Object[] {"CC", "cc@163.com", 0, 3});

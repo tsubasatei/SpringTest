@@ -4,5 +4,23 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- <context:component-scan> :
+        base-package: 属性指定一个需要扫描的基类包，
+            Spring 容器将会扫描这个基类包里及其子包中的所有类.
+            当需要扫描多个包时, 可以使用逗号分隔
+        resource-pattern 属性过滤特定的类，
+
+        <context:include-filter> 子节点表示要包含的目标类
+        <context:exclude-filter> 子节点表示要排除在外的目标类
+
+        组件扫描(component scanning):  Spring 能够从 classpath 下自动扫描, 侦测和实例化具有特定注解的组件.
+        特定组件包括:
+            @Component: 基本注解, 标识了一个受 Spring 管理的组件
+            @Repository: 标识持久层组件
+            @Service: 标识服务层(业务层)组件
+            @Controller: 标识表现层组件
+        对于扫描到的组件, Spring 有默认的命名策略: 使用非限定类名, 第一个字母小写. 也可以在注解中通过 value 属性值标识组件的名称
+
+    -->
     <context:component-scan base-package="com.xt.spring.bean.generic.di"/>
 </beans>

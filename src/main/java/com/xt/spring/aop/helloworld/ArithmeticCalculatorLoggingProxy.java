@@ -1,7 +1,6 @@
 package com.xt.spring.aop.helloworld;
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
@@ -16,7 +15,7 @@ public class ArithmeticCalculatorLoggingProxy {
     }
 
     public ArithmeticCalculator getLoggingProxy() {
-        ArithmeticCalculator proxy = null;
+        ArithmeticCalculator proxy;
 
         // 代理对象由哪一个类加载器负责加载
         ClassLoader loader = target.getClass().getClassLoader();

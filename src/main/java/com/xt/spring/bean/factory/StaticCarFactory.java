@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class StaticCarFactory {
 
-    private static Map<String, Car> cars = new HashMap<String, Car>();
+    private static Map<String, Car> cars = new HashMap<>();
 
     static {
         cars.put("Audi", new Car("Audi", 300000));

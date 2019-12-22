@@ -22,6 +22,7 @@ public class LoggingAspect {
      * 定义一个方法，用于声明切入点表达式。一般地，该方法中不再需要添加其他的代码
      * 使用 @Pointcut 来声明切入点表达式
      * 后面的其他通知直接使用方法名来引用当前的切入点表达式
+     * * 代表匹配任意修饰符及任意返回值, 参数列表中的 .. 匹配任意数量的参数
      */
     @Pointcut("execution(public int com.xt.spring.aop.impl.ArithmeticCalculatorImpl.*(..))")
     public void declareJoinPointExpression(){}
@@ -50,6 +51,11 @@ public class LoggingAspect {
     /**
      * 在方法正常结束后执行的代码
      * 返回通知是可以访问到方法的返回值
+     *
+     * 在返回通知中, 只要将 returning 属性添加到 @AfterReturning 注解中, 就可以访问连接点的返回值.
+     * 该属性的值即为用来传入返回值的参数名称
+     *
+     * 必须在通知方法的签名中添加一个同名参数. 在运行时, Spring AOP 会通过这个参数传递返回值.
      * @param joinPoint
      * @param result
      */
@@ -63,6 +69,10 @@ public class LoggingAspect {
     /**
      * 在目标方法出现异常时会执行的代码
      * 可以访问到异常对象；且可以指定在出现特定异常时执行通知代码
+     *
+     * 将 throwing 属性添加到 @AfterThrowing 注解中, 也可以访问连接点抛出的异常.
+     * Throwable 是所有错误和异常类的超类. 所以在异常通知方法可以捕获到任何错误和异常.
+     * 如果只对某种特殊的异常类型感兴趣, 可以将参数声明为其他异常的参数类型. 然后通知就只在抛出这个类型及其子类的异常时才被执行
      * @param joinPoint
      * @param ex
      */

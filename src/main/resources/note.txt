@@ -1,7 +1,7 @@
 1. Spring AOP
 
 1) 加入 Maven 依赖
-    spring-context：自动导入相关依赖 aop、beans、cores、expressions
+    spring-context：自动导入相关依赖 aop、beans、core、expression
     spring-aspects：自动导入相关依赖 aspectjweaver
 
 2) 在配置文件中加入 aop 命名空间
@@ -95,7 +95,7 @@ File > Project Structure > Artifacts > 在右侧Output Layout右击项目名，�
 注意: 在 IOC 容器中配置 Struts2 的 Action 时, 需要配置 scope 属性, 其值必须为 prototype
 
 <bean id="personAction"
-	class="com.atguigu.spring.struts2.actions.PersonAction"
+	class="com.xt.spring.struts2.actions.PersonAction"
 	scope="prototype">
 	<property name="personService" ref="personService"></property>
 </bean>
@@ -117,3 +117,8 @@ if (appContext.containsBean(beanName)) {
     Class beanClazz = getClassInstance(beanName);
     o = buildBean(beanClazz, extraContext);
 }
+
+通过注册 Servlet 监听器 ContextLoaderListener, Web 应用程序可以加载 Spring 的ApplicationContext 对象.
+这个监听器会将加载好的 ApplicationContext 对象保存到 Web 应用程序的 ServletContext 中.
+随后, Servlet 或可以访问 ServletContext 的任意对象就能通过一个辅助方法来访问 Spring 的应用程序上下文了
+http://localhost:8080/test.jsp

@@ -21,7 +21,7 @@ public class DepartmentDao extends JdbcDaoSupport {
 
     public Department getById(Integer id) {
         String sql = "SELECT id, departmentName FROM department WHERE id = ?";
-        RowMapper<Department> rowMapper = new BeanPropertyRowMapper<Department>(Department.class);
+        RowMapper<Department> rowMapper = new BeanPropertyRowMapper<>(Department.class);
         Department department = getJdbcTemplate().queryForObject(sql, rowMapper, id);
         return department;
 

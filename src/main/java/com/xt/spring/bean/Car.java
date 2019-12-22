@@ -1,6 +1,8 @@
 package com.xt.spring.bean;
 
+import lombok.Data;
 
+@Data
 public class Car {
 
     private String brand;
@@ -8,31 +10,16 @@ public class Car {
     private int price;
     private double maxSpeed;
 
-    public Car(String brand, String corp, double maxSpeed) {
-        this.brand = brand;
-        this.corp = corp;
-        this.maxSpeed = maxSpeed;
-    }
-
     public Car(String brand, String corp, int price) {
         this.brand = brand;
         this.corp = corp;
         this.price = price;
     }
 
-
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "brand='" + brand + '\'' +
-                ", corp='" + corp + '\'' +
-                ", price=" + price +
-                ", maxSpeed=" + maxSpeed +
-                '}';
-    }
-
-    public void setMaxSpeed(double maxSpeed) {
+    public Car(String brand, String corp, double maxSpeed) {
+        this.brand = brand;
+        this.corp = corp;
         this.maxSpeed = maxSpeed;
     }
+
 }

@@ -1,5 +1,8 @@
 package com.xt.spring.bean.cycle;
 
+import lombok.ToString;
+
+@ToString
 public class Car {
 
     private String brand;
@@ -19,12 +22,5 @@ public class Car {
 
     public void destroy() {
         System.out.println("destroy...");
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "brand='" + brand + '\'' +
-                '}';
     }
 }

@@ -6,6 +6,17 @@ import com.xt.spring.bean.collections.NewPerson;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/**
+ * ApplicationContext 的主要实现类：
+ *  - ClassPathXmlApplicationContext：从 类路径下加载配置文件
+ *  - FileSystemXmlApplicationContext: 从文件系统中加载配置文件
+ *  - ConfigurableApplicationContext 扩展于 ApplicationContext，新增加两个主要方法：refresh() 和 close()，
+ *    让 ApplicationContext 具有启动、刷新和关闭上下文的能力
+ *
+ * ApplicationContext 在初始化上下文时就实例化所有单例的 Bean。
+ * WebApplicationContext 是专门为 WEB 应用而准备的，它允许从相对于 WEB 根目录的路径中完成初始化工作
+ *
+ */
 public class MainTest {
 
     public static void main(String[] args) {
@@ -28,10 +39,10 @@ public class MainTest {
         helloWorld.hello();
 
         Car car = (Car) ctx.getBean("car");
-        System.out.println(car);
+        System.out.println(car);  // Car{brand='Audi', corp='<shanghai^>', price=250, maxSpeed=250.0}, maxSpeed 被 person2的car赋值
 
         car = (Car) ctx.getBean("car2");
-        System.out.println(car);
+        System.out.println(car); // Car{brand='Baoma', corp='Shanghai', price=0, maxSpeed=240.0}
 
         Person person = (Person) ctx.getBean("person");
         System.out.println(person);
