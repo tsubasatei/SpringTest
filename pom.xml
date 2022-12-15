@@ -10,7 +10,7 @@
     <description>Spring4</description>
 
     <properties>
-        <spring.version>5.1.5.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <mysql.version>8.0.15</mysql.version>
         <c3p0.version>0.9.5.4</c3p0.version>
         <junit.version>4.12</junit.version>
